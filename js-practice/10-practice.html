@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML CSS AND JS</title>
+  </head>
+  <style>
+    body {
+      font-family: Arial;
+    }
+
+    .cart-button {
+      background-color: rgb(255, 216, 20);
+      color: black;
+      padding: 10px 40px;
+      border-radius: 20px;
+      border: none;
+      font-size: 15px;
+    }
+
+    .request-button {
+      background-color: black;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 15px;
+      margin-right: 10px;
+    }
+
+    .schedule-button {
+      background-color: rgb(230, 230, 230);
+      color: black;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 15px;
+    }
+
+    .toggle-button {
+      background-color: rgb(230, 230, 230);
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      margin-right: 10px;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    .is-toggled {
+      background-color: black;
+      color: white;
+    }
+  </style>
+  <body>
+    <button class="cart-button">Add to Cart</button>
+    <p>Uber buttons</p>
+    <button class="request-button">Request now</button>
+    <button class="schedule-button">Schedule for later</button>
+    <!--
+  <p>Test button</p>
+
+  <button class="js-button">Test</button>
+
+  -->
+    <p>three Buttons</p>
+    <!--
+    <button
+      class="toggle-button js-button"
+      onclick="
+      const button = document.querySelector('.js-button');
+      if (!button.classList.contains('is-toggled')) {
+        button.classList.add('is-toggled');
+      } else {
+        button.classList.remove('is-toggled');
+      }
+    "
+    >
+      Gaming
+    </button>
+    <button
+      class="toggle-button js-button-2"
+      onclick="
+      const button = document.querySelector('.js-button-2');
+      if (!button.classList.contains('is-toggled')) {
+        button.classList.add('is-toggled');
+      } else {
+        button.classList.remove('is-toggled');
+      }
+    "
+    >
+      Music
+    </button>
+    <button
+      class="toggle-button js-button-3"
+      onclick="
+      const button = document.querySelector('.js-button-3');
+      if (!button.classList.contains('is-toggled')) {
+        button.classList.add('is-toggled');
+      } else {
+        button.classList.remove('is-toggled');
+      }
+    "
+    >
+      Tech
+    </button>
+-->
+  <button class="toggle-button js-button" onclick="
+      toggleButton('.js-button');
+    ">Gaming</button>
+
+    <button class="toggle-button js-button-2" onclick="
+      toggleButton('.js-button-2');
+    ">Music</button>
+
+    <button class="toggle-button js-button-3" onclick="
+      toggleButton('.js-button-3');
+    ">Tech</button>
+
+
+    <script>
+      
+function toggleButton(selector) {
+  const button = document.querySelector(selector);
+  if (!button.classList.contains('is-toggled')) {
+
+  
+    turnOffPreviousButton();
+
+    button.classList.add('is-toggled');
+  } else {
+    button.classList.remove('is-toggled');
+  }
+}
+
+function turnOffPreviousButton() {
+  const previousButton = document.querySelector('.is-toggled');
+  if (previousButton) {
+    previousButton.classList.remove('is-toggled');
+  }
+}
+      /*
+    const button = document.querySelector('.js-button');
+      console.log(button.classList.contains('js-button'));
+      */
+    </script>
+  </body>
+</html>

@@ -1,12 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Task</title>
-</head>
-<body>
-  
-  
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task</title>
+    <style>
+      .product-image {
+        width: 100px;
+        height: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <img src="images/athletic-cotton-socks-6-pairs.jpg" class="product-image" />
+    <p>Athletic Cotton socks</p>
+    <p class="js-price">$20</p>
+    <button
+      onclick="
+  cartButton();
+  cartPrice();
+let price = cartQuantity * 20;
+
+ 
+
+  "
+    >
+      Add to cart
+    </button>
+    <button
+      onclick="
+ removeCartButton();
+  "
+    >
+      Remove from Cart
+    </button>
+
+
+
+    <script>
+      let cost = 20;
+      let cartQuantity = 1; 
+
+      function cartPrice() {
+let priceCart = cost * cartQuantity;
+ document.querySelector('.js-price').innerHTML = `$${priceCart}`;
+
+      }
+     
+      
+
+      
+      function cartButton() {
+        if (cartQuantity + 1 > 5) {
+    alert('The cart is full');
+  } else { cartQuantity ++;
+
+    console.log(`Cart Quantity: ${cartQuantity}`);
+  }
+      }
+
+      function removeCartButton() {
+         if (cartQuantity -1 < 1)  {
+alert('No enough items in the cart');
+  } else {
+    cartQuantity --;
+    cartPrice();
+    console.log(`Cart Quantity: ${cartQuantity}`);
+  }
+
+      }
+    </script>
+  </body>
 </html>
