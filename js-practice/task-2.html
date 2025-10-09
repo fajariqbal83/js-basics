@@ -5,7 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Task 2</title>
     <style>
-     
+      body {
+        text-align: center;
+        font-size: 20px;
+        font-weight: bold;
+        font-family: Arial;
+      }
+
       .button-container {
         display: flex;
         flex-direction: column;
@@ -24,31 +30,185 @@
         background-color: rgb(40, 244, 47);
       }
 
+      .enter-button {
+        background-color: skyblue;
+        padding: 6px 15px;
+        border-radius: 5px;
+      }
     </style>
   </head>
   <body>
- <div class="button-container">
-     <div>
-      <button class="button-style">0</button>
-      <button class="button-style">1</button>
-     </div>
-    <div>
-      <button class="button-style">2</button>
-      <button class="button-style">3</button>
+    <p>Select up to 6 Numbers</p>
+    <p class="js-numbers number-style">000000</p>
+    <div class="button-container">
+      <div>
+        <button
+          onclick="
+      numbersButton('0');
+      quantityButton();
+        "
+          class="button-style"
+        >
+          0
+        </button>
+        <button
+          onclick="
+      numbersButton('1');
+      quantityButton();
+        "
+          class="button-style"
+        >
+          1
+        </button>
+      </div>
+      <div>
+        <button
+          onclick="
+      numbersButton('2');
+      quantityButton();
+        "
+          class="button-style"
+        >
+          2
+        </button>
+        <button
+          onclick="
+      numbersButton('3');
+      quantityButton();
+        "
+          class="button-style"
+        >
+          3
+        </button>
+      </div>
+      <div>
+        <button
+          onclick="
+      numbersButton('4');
+      quantityButton();
+        "
+          class="button-style"
+        >
+          4
+        </button>
+        <button
+          onclick="
+      numbersButton('5');
+      quantityButton();
+        "
+          class="button-style"
+        >
+          5
+        </button>
+      </div>
+      <div>
+        <button
+          onclick="
+      numbersButton('6');
+      quantityButton();
+        "
+          class="button-style"
+        >
+          6
+        </button>
+        <button
+          onclick="
+      numbersButton('7');
+      quantityButton();
+        "
+          class="button-style"
+        >
+          7
+        </button>
+      </div>
+      <div>
+        <button
+          onclick="
+      numbersButton('8');
+      quantityButton();
+        "
+          class="button-style"
+        >
+          8
+        </button>
+        <button
+          onclick="
+      numbersButton('9');
+      quantityButton();
+        "
+          class="button-style"
+        >
+          9
+        </button>
+      </div>
     </div>
-    <div>
-      <button class="button-style">4</button>
-      <button class="button-style">5</button>
-    </div>
-    <div>
-      <button class="button-style">6</button>
-      <button class="button-style">7</button>
-    </div>
-    <div>
-      <button class="button-style">8</button>
-      <button class="button-style">9</button>
-    </div>
- </div>
-    <script></script>
+    <button
+      onclick="
+
+     numbersButton(value);
+     alert(`Even: ${property.even}, 0dd: ${property.odd}`);
+ 
+ "
+      class="enter-button"
+    >
+      Enter
+    </button>
+    <script>
+      let property = {
+        even: 0,
+        odd: 0,
+      };
+
+      let numbers = "";
+
+      let numbersQuantity = 1;
+
+      function quantityButton() {
+        if (numbersQuantity + 1 > 6) {
+          alert("Select up to 6 Numbers");
+        } else {
+          numbersQuantity++;
+        }
+      }
+
+      function numbersButton(value) {
+        numbers += value;
+        displayNumbers();
+
+        let result = "";
+
+        if (value === "0") {
+          result = "even";
+        } else if (value === "2") {
+          result = "even";
+        } else if (value === "4") {
+          result = "even";
+        } else if (value === "6") {
+          result = "even";
+        } else if (value === "8") {
+          result = "even";
+        } else if (value === "1") {
+          result = "odd";
+        } else if (value === "3") {
+          result = "odd";
+        } else if (value === "5") {
+          result = "odd";
+        } else if (value === "7") {
+          result = "odd";
+        } else if (value === "9") {
+          result = "odd";
+        }
+
+        if (result === "even") {
+          property.even += 1;
+        } else if (result === "odd") {
+          property.odd += 1;
+        }
+      }
+
+      function displayNumbers() {
+        document.querySelector(".js-numbers").innerHTML = numbers;
+      }
+    </script>
   </body>
 </html>
