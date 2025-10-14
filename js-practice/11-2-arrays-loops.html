@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    /*
+    let words = ['hello', 'world', 'search', 'good']
+
+    let index = -1;
+
+    for (let i = 0; i < words.length; i++) {
+      if(words[i] === 'search') {
+        index = i;
+      }
+    }
+
+    console.log(index);
+
+    words = ['not', 'found'];
+    index = -1;
+
+    for (let i = 0; i < words.length; i++) {
+        if (words[i] === 'search') {
+          index = i;
+        }
+      }
+
+  console.log(index);
+*/
+
+/*
+
+let words = ['hello', 'world', 'search', 'good', 'search']
+
+    let index = -1;
+
+    for (let i = 0; i < words.length; i++) {
+      if(words[i] === 'search') {
+        index = i;
+        break;
+      }
+    }
+
+    console.log(index);
+
+    words = ['not', 'found'];
+      index = -1;
+
+      for (let i = 0; i < words.length; i++) {
+        if (words[i] === 'search') {
+          index = i;
+          break;
+        }
+      }
+
+       console.log(index);
+
+       */
+/*
+       function findIndex(array, word) {
+
+        for (let i = 0; i < array.length; i++) {
+          if (array[i] === word) {
+
+              return i;
+          }
+        }
+        
+   return -1;
+
+       }
+
+    console.log(findIndex(['green', 'red' , 'blue', 'red'], 'red')); 
+    console.log(findIndex(['green', 'red' , 'blue', 'red'], 'yellow'));   
+
+    */
+/*
+     function removeEgg(foods) {
+        const result = [];
+
+        for (let i = 0; i < foods.length; i++) {
+          // If the string is 'egg', use continue to skip it.
+          if (foods[i] === 'egg') {
+            continue;
+          }
+
+          // We don't need to have an else here because
+          // the only way to reach this code is if the 
+          // if-statement above is false.
+          result.push(foods[i]);
+        }
+
+        return result;
+      }
+
+      console.log(removeEgg(['egg', 'apple', 'egg', 'egg', 'ham']));
+*/
+/*
+ function removeEgg(foods) {
+        const result = [];
+        let eggsRemoved = 0;
+
+        for (let i = 0; i < foods.length; i++) {
+          // Only skip 'egg' if we removed less than 2
+          // of them so far.
+          if (foods[i] === 'egg' && eggsRemoved < 2) {
+            // Update the number of 'egg' we have removed.
+            // This must be done before continue, otherwise,
+            // doing continue first will just skip this code.
+            eggsRemoved++;
+            continue;
+          }
+
+          result.push(foods[i]);
+        }
+
+        return result;
+      }
+
+      console.log(removeEgg(['egg', 'apple', 'egg', 'egg', 'ham']));
+
+*/
+/*
+function removeEgg(foods) {
+  const reversedFoods = foods.reverse();
+  const result = [];
+  let eggsRemoved = 0;
+
+  for (let i = 0; i < reversedFoods.length; i++) {
+    if (reversedFoods[i] === 'egg' && eggsRemoved < 2) {
+      eggsRemoved++;
+      continue;
+    }
+
+    result.push(reversedFoods[i]);
+  }
+   return result.reverse();
+}
+console.log(removeEgg(['egg', 'apple', 'egg', 'egg', 'ham']));
+*/
+/*
+function removeEgg(foods) {
+        // To prevent modifying the original array, we
+        // can create a copy of the array using .slice()
+        const foodsCopy = foods.slice();
+        const reversedFoods = foodsCopy.reverse();
+
+        // Advanced technique:
+        // Since foods.slice() results in an array, we
+        // can also use .reverse() directly like this:
+        // foods.slice().reverse();
+        
+        // This technique is called "method chaining"
+        // because we use one method after another
+        // (like a chain of methods).
+        const result = [];
+        let eggsRemoved = 0;
+
+        for (let i = 0; i < reversedFoods.length; i++) {
+          if (reversedFoods[i] === 'egg' && eggsRemoved < 2) {
+            eggsRemoved++;
+            continue;
+          }
+
+          result.push(reversedFoods[i]);
+        }
+
+        return result.reverse();
+      }
+
+      const foods = ['egg', 'apple', 'egg', 'egg', 'ham'];
+      console.log(removeEgg(foods));
+      console.log(foods);
+*/
+/*
+ for (let i = 1; i <= 20; i++) {
+       
+        if (i % 3 === 0 && i % 5 === 0) {
+          console.log('FizzBuzz');
+
+        } else if (i % 3 === 0) {
+          console.log('Fizz');
+
+        } else if (i % 5 === 0) {
+          console.log('Buzz');
+          
+        } else {
+          console.log(i);
+        }
+      }
+*/
+
+ function findIndex(array, word) {
+        for (let i = 0; i < array.length; i++) {
+          if (array[i] === word) {
+            return i;
+          }
+        }
+
+        return -1;
+      }
+
+      function unique(array) {
+        const result = [];
+
+        for (let i = 0; i < array.length; i++) {
+          const word = array[i];
+
+          if (findIndex(result, word) === -1) {
+            result.push(word);
+          }
+        }
+
+        return result;
+      }
+
+      console.log(unique(['green', 'red', 'blue', 'red']));
+      console.log(unique(['red', 'green', 'green', 'red']));
+  </script>
+</body>
+</html>
