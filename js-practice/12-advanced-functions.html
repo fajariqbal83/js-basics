@@ -49,7 +49,7 @@ param();
  });
 
  */ 
-
+/*
  setTimeout(function () {
   console.log('timeout');
    console.log('timeout2');
@@ -64,6 +64,21 @@ param();
  }, 3000);
 
   console.log('next line 2');
+  */
+
+  [
+    'make dinner',
+    'wash dishes',
+    'watch youTube'
+  ]. forEach(
+    function(value, index) {
+      if (value === 'wash dishes') {
+        return;
+      }
+      console.log(index);
+      console.log(value);
+    }
+  );
   </script>
 </body>
 </html>
