@@ -131,6 +131,7 @@
         <button
           onclick="
      setValue(9);
+     
         "
           class="button-style"
         >
@@ -149,19 +150,19 @@
     <button
    onclick="
    property();
+   
    "
       class="enter-button"
     >
       Enter
     </button>
     <script>
-      
+
+   
 
       let number = '';
-
       
-
-      function property() {
+   function property() {
 
         if (number%2 === 0) {
           alert(`${number} this is even number`);
@@ -172,7 +173,10 @@
 
       }
 
+     
+
       function setValue(value) {
+       
         if (number.length >= 6) {
           alert('select up to 6 numbers');
           return;
@@ -183,7 +187,8 @@
         document.querySelector(".js-button").innerHTML = number;
 
       }
-     
+
+  
     </script>
   </body>
 </html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>practice 2 advanced functions</title>
+</head>
+<body>
+  <!--
+  <button class="js-button" onclick="
+      updateButton();
+    ">Start</button>
+-->
+ <button class="js-button">Start</button>
+
+  <script>
+    //part 2
+    /*
+    const multiply = (value1, value2) => {
+  let result = value1 * value2;
+  return result;
+};
+
+console.log(multiply(2, 3));
+console.log(multiply(7, 10));
+*/ 
+/*
+const multiply = (a, b) => {
+        return a * b;
+      };
+
+      console.log(multiply(2, 3));
+      console.log(multiply(7, 10));
+*/ 
+/*
+  const multiply = (a, b) => a * b;
+
+      console.log(multiply(2, 3));
+      console.log(multiply(7, 10)); 
+*/ 
+
+
+/*
+function countPositive(nums) {
+  let positiveNumbers = 0;
+
+  nums.forEach((num) => {
+    if (num > 0) {
+      positiveNumbers++;
+    }
+  });
+  return positiveNumbers;
+}
+
+console.log(countPositive([1, -3, 5]));
+console.log(countPositive([-2, 3, -5, 7, 10]));
+*/ 
+
+/*
+function addNum(array, num) {
+  return array.map((value) => value + num);
+}
+
+console.log(addNum([1, 2, 3], 2));
+console.log(addNum([-2, -1, 0, 99], 2));
+*/ 
+
+/*
+function removeEgg(foods) {
+
+  return foods.filter((food) => food !== 'egg');
+
+}
+
+console.log(removeEgg(['egg', 'apple', 'egg', 'egg', 'ham']));
+*/ 
+/*
+function removeEgg(foods) {
+  let eggRemoved = 0;
+
+  return foods.filter((food) => {
+    if (food === 'egg' && eggRemoved < 2) {
+      eggRemoved++;
+      return false;
+    }
+    return true;
+
+  });
+
+}
+
+console.log(removeEgg(['egg', 'apple', 'egg', 'egg', 'ham']));
+*/  
+/*
+function updateButton() {
+        const button = document.querySelector('.js-button');
+
+        // The function below was changed
+        // to an arrow function.
+        setTimeout(() => {
+          button.innerHTML = 'Finished!';
+        }, 1000);
+      }
+*/ 
+
+  </script>
+</body>
+</html>
