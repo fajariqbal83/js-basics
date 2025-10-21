@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart Coffee Machine</title>
+  </head>
+  <body>
+    <script>
+        let waterLevel = 40;
+        let isMachineOn = false;
+        let cupsMade = 0;
+        let coffeeType = {
+      name: 'Latte',
+      waterNeeded: 30,
+      milkNeeded: 50,
+      isAvailable: true
+        };
+
+        function turnOnMachine() {
+          isMachineOn = true;
+          console.log('Machine is now ON.');
+        }
+
+        function brewCoffee(coffeeType) {
+          if (isMachineOn === true && waterLevel >= coffeeType.waterNeeded && coffeeType.isAvailable === true) {
+            waterLevel--;
+            cupsMade++;
+            console.log('Your Latte is ready!');
+          }
+        }
+
+        function refillWater() {
+          if (waterLevel < 20) {
+            console.log('Not enough water, please refill.');
+            waterLevel = 100;
+            console.log('Water refilled to 100%');
+          }
+        }
+
+        function checkStatus() {
+
+        }
+
+        turnOnMachine();
+        brewCoffee(coffeeType);
+        refillWater();
+
+    </script>
+  </body>
+</html>

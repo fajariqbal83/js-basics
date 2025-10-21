@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Security System”</title>
+</head>
+<body>
+  <script>
+
+// 🏠 1️⃣ VARIABLES — system state
+let isSystemOn = false;
+let currentTime = 'day'; // can be 'day' or 'night'
+let alarmCount = 0;
+
+// 🧩 2️⃣ OBJECT — represents one motion sensor
+const sensor = {
+  location: 'Front Door',
+  isMotionDetected: false,
+  isDoorLocked: false
+};
+
+// ⚙️ 3️⃣ FUNCTIONS — system abilities
+
+// Function 1: Activate the system
+function activateSystem() {
+  isSystemOn = true;
+  console.log('✅ Security system activated.');
+}
+
+// Function 2: Detect motion and respond
+function detectMotion(sensor) {
+  console.log(`📡 Checking motion at ${sensor.location}...`);
+
+  // Only respond if the system is ON
+  if (isSystemOn && sensor.isMotionDetected) {
+    console.log('🚨 Motion detected! Alarm triggered!');
+    alarmCount++;
+
+    // Send an alert to owner
+    sendAlert();
+
+    // Check if panic mode should be activated
+    if (alarmCount > 3) {
+      console.log('⚠️ Too many alarms! Entering PANIC MODE!');
+      sendEmergencyAlert();
+    }
+  } else if (!isSystemOn) {
+    console.log('System is OFF. No response.');
+  } else {
+    console.log('No motion detected. All clear.');
+  }
+}
+
+// Function 3: Lock or unlock doors automatically
+function lockDoors() {
+  if (currentTime === 'night') {
+    sensor.isDoorLocked = true;
+    console.log('🌙 It’s night — all doors are now LOCKED.');
+  } else {
+    sensor.isDoorLocked = false;
+    console.log('☀️ It’s day — all doors are UNLOCKED.');
+  }
+}
+
+// Function 4: Send a normal alert
+function sendAlert() {
+  console.log('📲 Sending alert to homeowner...');
+}
+
+// Function 5 (extra): Send emergency alert during panic mode
+function sendEmergencyAlert() {
+  console.log('🚓 EMERGENCY! Notifying authorities...');
+}
+
+// ⚙️ 4️⃣ SIMULATION — run the program step by step
+
+console.log('🏠 Smart Security System Simulation Started');
+console.log('--------------------------------------------');
+
+// Step 1: Activate the system
+activateSystem();
+
+// Step 2: Set time to night → doors should lock
+currentTime = 'night';
+lockDoors();
+
+// Step 3: Simulate different motion events
+sensor.isMotionDetected = true;
+detectMotion(sensor);  // 1st alarm
+
+sensor.isMotionDetected = true;
+detectMotion(sensor);  // 2nd alarm
+
+sensor.isMotionDetected = false;
+detectMotion(sensor);  // no alarm
+
+sensor.isMotionDetected = true;
+detectMotion(sensor);  // 3rd alarm
+
+sensor.isMotionDetected = true;
+detectMotion(sensor);  // 4th alarm triggers PANIC MODE
+
+// Step 4: Switch to daytime → doors unlock
+currentTime = 'day';
+lockDoors();
+
+console.log('--------------------------------------------');
+console.log('Simulation Complete.');
+console.log(`Total alarms triggered: ${alarmCount}`);
+console.log(`Door locked: ${sensor.isDoorLocked}`);
+console.log(`System active: ${isSystemOn}`);
+
+
+  </script>
+</body>
+</html>

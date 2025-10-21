@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>all points part 1</title>
+  </head>
+  <body>
+    <script>
+      //To quickly show info or debug small code
+      alert();
+
+      //To check values in console (better for development)
+      console.log();
+
+      //Variables
+      //let — (Modern, Changeable)
+      //You can change its value later.
+      let city = "Lahore";
+      city = "Karachi"; // ✅ You can change it
+
+      //const — (Constant, Cannot change)
+      //Used when the value should never change.
+      const country = "Pakistan";
+      country = "India"; // ❌ Error! Cannot change
+
+      //var — (Old way)
+      //Still works, but not recommended in modern code because it has some problems with scope.
+      var color = "red";
+      color = "blue"; // works, but better use let
+      //Example: Using var
+      if (true) {
+        var color = "red";
+      }
+      console.log(color); // ✅ Works (you can still access it)
+      //Even though color was made inside the if block,
+      //you can still use it outside — this can cause bugs.
+
+      eval(); //is a built-in JavaScript function that takes a string and executes it as JavaScript code.
+
+      let result = eval("2 + 3 * 4");
+      console.log(result);
+
+      //Here, "2 + 3 * 4" is a string,
+      //but eval() runs it like real code → and gives you the result 14.
+
+      //A Boolean is a data type in JavaScript that has only two possible values: That’s it — only two choices like a light switch 💡
+      //ON (true) or OFF (false)
+
+      let isRaining = true;
+      let isSunny = false;
+
+      let isLoggedIn = true;
+
+      if (isLoggedIn) {
+        console.log("Welcome back!");
+      } else {
+        console.log("Please log in.");
+      }
+
+      if (condition) {
+        // code runs when condition is TRUE
+      } else {
+        // code runs when condition is FALSE
+      }
+
+      //&& — AND operator
+      //Both conditions must be true to run the code.
+
+      //|| — OR operator
+      //At least one condition must be true.
+
+      //! — NOT operator
+      //it reverses the value — makes true → false and false → true.
+
+      //Truthy and Falsy values
+      //Falsy values (only 7 in total)
+      //false;
+      //0;
+      //("");
+      //null;
+      //undefined;
+      //NaN;
+      //0n; // BigInt zero
+
+      //Everything else (like "hello", 1, [], {}) is truthy.
+
+      //Ternary Operator
+      //Ternary Operator is a short way to write an if...else statement.
+
+      let age = 18;
+      let result = age >= 18 ? "Adult" : "Minor";
+      console.log(result);
+
+      //nested ternary operator
+      let score = 85;
+      let grade = score >= 90 ? "A" : score >= 75 ? "B" : "C";
+
+      console.log(grade);
+
+      //Function
+      //A function is a block of code that performs a specific task — and you can reuse it whenever you want.
+
+      //Regular Function
+
+      function welcomeMessage() {
+        alert("Welcome to my website!");
+      }
+      function sayHello(name) {
+        alert("Hello " + name + "!");
+      }
+
+      sayHello("Ali"); // Output: Hello Ali!
+      sayHello("Sara"); // Output: Hello Sara!
+
+      //Function Expression
+      //Stored in a variable
+      const sayHi = function () {};
+
+      //Arrow Function
+      const sayHi = () => {};
+      //1. No parameters
+      const greet = () => {
+        console.log("Hello, World!");
+      };
+
+      greet(); // Output: Hello, World!
+
+      //2. One parameter
+
+      const greet = (name) => {
+        console.log("Hello, " + name);
+      };
+
+      greet("Ali"); // Output: Hello, Ali
+
+      //3. Multiple parameters
+
+      const add = (a, b) => {
+        return a + b;
+      };
+
+      console.log(add(5, 3)); // Output: 8
+
+      //4. Single-line return (Implicit Return)
+
+      const multiply = (a, b) => a * b;
+
+      console.log(multiply(4, 2)); // Output: 8
+
+      //5. Multi-line (Block body)
+
+      const calculate = (x, y) => {
+        let sum = x + y;
+        let result = sum * 2;
+        return result;
+      };
+
+      console.log(calculate(5, 3)); // Output: 16
+
+      //6. Arrow function with no return value (void)
+
+      const showMessage = (message) => console.log(message);
+      showMessage("Welcome!");
+
+      //Implicit
+      //“Automatic” – JavaScript returns the value without you writing return
+
+      //Explicit
+      //“Clearly stated” – you write return yourself
+      //When you use {}, you must also use return keyword
+    </script>
+  </body>
+</html>
