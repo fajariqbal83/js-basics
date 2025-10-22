@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart Grocery Store Self-Checkout</title>
+  </head>
+  <body>
+    <script>
+      let isMachineOn = false;
+      let totalAmount = 0;
+      let itemsScanned = 0;
+      let hasMembershipCard = true;
+
+      let item = {
+        name: "eggs",
+        price: 4,
+        isAvailable: true,
+      };
+
+      function turnOnMachine() {
+        if (!isMachineOn) {
+          isMachineOn = true;
+          console.log("Machine is now ON. Ready to scan items!");
+        } else {
+          console.log("Machine is already ON");
+        }
+      }
+
+      function scanItem(item) {
+        if (!isMachineOn) {
+          console.log("Machine is OFF. Please turn it ON first.");
+          return;
+        }
+
+        if (!item.isAvailable) {
+          console.log(`${item.name} is out of stock!`);
+          return;
+        }
+
+        totalAmount += item.price;
+        itemsScanned++;
+        console.log(`Scanned ${item.name}`);
+        console.log(`New total: $${totalAmount}`);
+        console.log(`Items scanned: ${itemsScanned}`);
+
+        if (itemsScanned >= 10) {
+          console.log("Maximum 10 items scanned — next customer please.");
+          isMachineOn = false;
+        }
+      }
+
+      function applyDiscount() {
+        if (totalAmount > 20 && hasMembershipCard) {
+          totalAmount *= 0.9;
+          // totalAmount - totalAmount * 0.1;
+          console.log("10% discount applied for members!");
+        } else {
+          console.log("No discount is applied");
+        }
+      }
+
+      function showReceipt() {
+        console.log("Receipt");
+        console.log(`Items: ${itemsScanned}`);
+        console.log(`Total: $${totalAmount}`);
+
+        if (totalAmount > 20 && hasMembershipCard) {
+          console.log("Discount Applied: Yes");
+        } else {
+          console.log("Discount Applied: No");
+        }
+        if (totalAmount > 50) {
+          console.log("You earned a free reusable bag!");
+        }
+         console.log("Thank you for shopping with us!");
+      }
+
+      turnOnMachine();
+      scanItem(item);
+      applyDiscount();
+      showReceipt();
+    </script>
+  </body>
+</html>

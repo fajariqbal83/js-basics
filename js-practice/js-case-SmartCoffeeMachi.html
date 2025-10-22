@@ -7,44 +7,90 @@
   </head>
   <body>
     <script>
-        let waterLevel = 40;
-        let isMachineOn = false;
-        let cupsMade = 0;
-        let coffeeType = {
-      name: 'Latte',
-      waterNeeded: 30,
-      milkNeeded: 50,
-      isAvailable: true
-        };
+     // Smart Coffee Machine Simulation
 
-        function turnOnMachine() {
-          isMachineOn = true;
-          console.log('Machine is now ON.');
-        }
+//  Step 1: Variables
+let waterLevel = 40; // percentage of water left (0–100)
+let isMachineOn = false; // starts OFF
+let cupsMade = 0; // number of cups made so far
 
-        function brewCoffee(coffeeType) {
-          if (isMachineOn === true && waterLevel >= coffeeType.waterNeeded && coffeeType.isAvailable === true) {
-            waterLevel--;
-            cupsMade++;
-            console.log('Your Latte is ready!');
-          }
-        }
+// Step 2: Coffee Type Object
+let coffeeType = {
+  name: 'Latte',
+  waterNeeded: 30,
+  milkNeeded: 50,
+  isAvailable: true
+};
 
-        function refillWater() {
-          if (waterLevel < 20) {
-            console.log('Not enough water, please refill.');
-            waterLevel = 100;
-            console.log('Water refilled to 100%');
-          }
-        }
+// Step 3: Functions
 
-        function checkStatus() {
+//  Turn the machine ON
+function turnOnMachine() {
+  if (!isMachineOn) { // only turn on if it's off
+    isMachineOn = true;
+    console.log('Machine is now ON.');
+  } else {
+    console.log('Machine is already ON.');
+  }
+}
 
-        }
+// Brew a coffee
+function brewCoffee(coffeeType) {
+  console.log(`\nAttempting to brew a ${coffeeType.name}...`);
 
-        turnOnMachine();
-        brewCoffee(coffeeType);
-        refillWater();
+  // Check all required conditions before brewing
+  if (!isMachineOn) {
+    console.log('Cannot brew. The machine is OFF.');
+  } 
+  else if (waterLevel < coffeeType.waterNeeded) {
+    console.log('Not enough water. Please refill before brewing.');
+  } 
+  else if (!coffeeType.isAvailable) {
+    console.log('This coffee type is currently unavailable.');
+  } 
+  else {
+    // All good — make coffee!
+    waterLevel -= coffeeType.waterNeeded;
+    cupsMade++;
+    console.log(` Your ${coffeeType.name} is ready! Enjoy!`);
+  }
+
+  // Auto-turn off if machine made 5 or more cups
+  if (cupsMade >= 5) {
+    isMachineOn = false;
+    console.log('Machine is cooling down after 5 cups. Turning OFF...');
+  }
+}
+
+// Refill water if it’s low
+function refillWater() {
+  console.log('\nChecking water level...');
+  if (waterLevel < 20) {
+    console.log(' Not enough water, refilling tank...');
+    waterLevel = 100;
+    console.log('Water refilled to 100%.');
+  } else {
+    console.log('Water level is OK, no need to refill.');
+  }
+}
+
+// Check the machine’s current status
+function checkStatus() {
+  console.log('\nMachine Status:');
+  console.log(`- Machine ON: ${isMachineOn}`);
+  console.log(`- Water Level: ${waterLevel}%`);
+  console.log(`- Cups Made: ${cupsMade}`);
+  console.log(`- Coffee Available: ${coffeeType.isAvailable}`);
+}
+
+//  Step 4: Simulation — running your program
+
+console.log('Starting Smart Coffee Machine Simulation...');
+turnOnMachine();       // turn on the machine
+brewCoffee(coffeeType); // brew the first coffee
+checkStatus();          // check current status
+refillWater();          // check if refill needed
+checkStatus();          // check status again after refill
 
     </script>
   </body>

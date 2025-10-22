@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const orders = [
+        {
+          id: 1,
+          customer: "Ali",
+          items: [
+            { name: "Laptop", price: 80000, quantity: 1 },
+            { name: "Mouse", price: 1500, quantity: 2 },
+          ],
+          status: "delivered",
+        },
+        {
+          id: 2,
+          customer: "Sara",
+          items: [
+            { name: "Headphones", price: 3000, quantity: 1 },
+            { name: "Keyboard", price: 2500, quantity: 1 },
+          ],
+          status: "pending",
+        },
+        {
+          id: 3,
+          customer: "Ahmed",
+          items: [
+            { name: "Monitor", price: 15000, quantity: 2 },
+            { name: "HDMI Cable", price: 800, quantity: 3 },
+          ],
+          status: "delivered",
+        },
+      ];
+
+      console.log("All Orders");
+      orders.forEach((order) => {
+        console.log(
+          `Order ID: ${order.id}, Customer:${order.customer}, Status: ${order.status}`
+        );
+      });
+
+      const pendingOrders = orders.filter(order => order.status === 'pending');
+      console.log('\n Pending Orders:', pendingOrders);
+
+      const orderTotals = orders.map( order => {
+        const total = order.items.reduce((sum, item) => sum + item.price * item.quantity, 0);
+        return { id: order.id, customer: order.customer, total}
+      });
+
+      console.log('\nTotal for each order:', orderTotals);
+
+      const totalRevenue = orders
+      .filter(order => order.status === 'delivered')
+      .reduce((sum, order) => {
+        const orderTotals = order.items.reduce((t, item) => t + item.price * item.quantity, 0);
+        return sum + orderTotals;
+      },0);
+
+      console.log('\nTotal Revenue from Delivered Orders:', totalRevenue);
+
+      const customerName = 'Sara';
+      const foundOrder = orders.find(order => order.customer === customerName);
+
+      console.log(`\nOrder found for ${customerName}:`, foundOrder);
+
+      for (let i = 0; i < orders.length; i++) {
+        if (orders[i].status === 'pending') {
+          orders[i].status = 'delivered';
+        }
+      }
+
+      console.log("\nUpdated Orders (after delivery):", orders);
+
+      orders.push({
+          id: 4,
+          customer: "Zainab",
+          items: [
+            { name: "Tablet", price: 35000, quantity: 1 },
+            { name: "Stylus Pen", price: 2500, quantity: 1 }
+          ],
+          status: "pending",
+        });
+
+        console.log("\nAfter adding new order:", orders);
+
+        const cancelId = 2;
+        const indexToRemove = orders.findIndex(order => order.id === cancelId);
+
+        if (indexToRemove !== -1) {
+  orders.splice(indexToRemove, 1);
+}
+
+console.log("\nAfter removing canceled order:", orders);
+
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Report Viewer</title>
+  <style>
+    body {
+      font-family: Arial;
+      margin: 30px;
+    }
+    .report {
+      margin-top: 20px;
+      padding: 15px;
+      border: 2px solid #333;
+      border-radius: 10px;
+      width: 300px;
+    }
+    button {
+      margin-right: 10px;
+      padding: 8px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      background-color: #3498db;
+      color: white;
+    }
+    button:hover {
+      background-color: #2980b9;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>🎓 Student Report Viewer</h2>
+
+  <button id="showBtn">Show Report</button>
+  <button id="hideBtn">Hide Report</button>
+
+  <div id="reportContainer"></div>
+
+  <script>
+    // Step 1: JSON data (like from a server)
+    const studentJSON = `
+    [
+      { "name": "Ali", "grade": "A", "marks": 89 },
+      { "name": "Sara", "grade": "B+", "marks": 78 },
+      { "name": "Usman", "grade": "A+", "marks": 92 }
+    ]
+    `;
+
+    // Step 2: Convert JSON to JS object
+    const students = JSON.parse(studentJSON);
+
+    // Step 3: DOM elements
+    const reportContainer = document.getElementById('reportContainer');
+    const showBtn = document.getElementById('showBtn');
+    const hideBtn = document.getElementById('hideBtn');
+
+    // Step 4: Show Report Function
+    showBtn.addEventListener('click', () => {
+      reportContainer.innerHTML = ''; // Clear old data
+
+      students.forEach(student => {
+        const div = document.createElement('div');
+        div.classList.add('report');
+        div.innerHTML = `
+          <strong>Name:</strong> ${student.name} <br>
+          <strong>Grade:</strong> ${student.grade} <br>
+          <strong>Marks:</strong> ${student.marks}
+        `;
+        reportContainer.appendChild(div);
+      });
+    });
+
+    // Step 5: Hide Report Function
+    hideBtn.addEventListener('click', () => {
+      reportContainer.innerHTML = ''; // Clear container
+    });
+  </script>
+
+</body>
+</html>
